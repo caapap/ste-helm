@@ -1,3 +1,4 @@
+{{/*
 # Copyright 2024 kxdigit | 讯飞数码
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-annotations:
-  catalog.cattle.io/release-name: kxdigit
-name: stellar
-description: A Helm Chart for stellar, cloud-native monitoring system
-keywords:
-  - stellar 
-  - monitoring
-  - alerting
-  - metrics
-  - traces
-  - logs
-maintainers:
-  name: kx 
-version: 0.2.8
+*/}}
+{{- if eq .Values.categraf.type "internal" -}}
 apiVersion: v1
-appVersion: 2.0.0
-icon: assets/stellar-icon.png
+kind: ConfigMap
+metadata:
+  name: input-kernel
+data:
+{{ (.Files.Glob "categraf/conf/input.kernel/*.toml").AsConfig | indent 2 }}
+{{- end -}}
+

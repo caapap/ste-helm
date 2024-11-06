@@ -27,16 +27,16 @@ expose:
     controller: default
     kubeVersionOverride: ""
     annotations: {}
-    nightingale:
+    stellar:
       annotations: {}
   clusterIP:
-    name: nightingale
+    name: stellar
     annotations: {}
     ports:
       httpPort: 80
       httpsPort: 443
   nodePort:
-    name: nightingale
+    name: stellar
     ports:
       http:
         port: 80
@@ -45,7 +45,7 @@ expose:
         port: 443
         nodePort: 30009
   loadBalancer:
-    name: nightingale
+    name: stellar
     IP: ""
     ports:
       httpPort: 80
@@ -123,7 +123,7 @@ database:
     automountServiceAccountToken: false
     image:
       repository: docker.kxdigit.com/stellar/mysql
-      tag: 5.7
+      tag: 8
     username: "root"
     password: "1234"
     shmSizeLimit: 512Mi
@@ -138,7 +138,7 @@ database:
   external:
     host: "192.168.0.1"
     port: "3306"
-    name: "n9e_v6"
+    name: "ste_v2"
     username: "user"
     password: "password"
     sslmode: "disable"
@@ -193,7 +193,7 @@ categraf:
     automountServiceAccountToken: false
     image:
       repository: docker.kxdigit.com/stellar/categraf
-      tag: latest
+      tag: v0.3.82
     nodeSelector: {}
     tolerations: []
     affinity: {}
@@ -208,7 +208,7 @@ categraf:
     password: ""
   podAnnotations: {}
 
-n9e:
+ste:
   type: internal
   internal:
     replicas: 1
@@ -216,7 +216,7 @@ n9e:
     automountServiceAccountToken: false
     image:
       repository: docker.kxdigit.com/stellar/stellar
-      tag: 2.0.0
+      tag: 2.0
     resources: {}
     #  requests:
     #    memory: 512Mi

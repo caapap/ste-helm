@@ -1,4 +1,4 @@
-# Helm Chart for Nightingale
+# Helm Chart for stellar
 
 中文 | [English](README.md)
 
@@ -61,19 +61,14 @@ external URL主要用于访问星相web服务
 
 ### 安装chart
 
-使用 `nightingale` 名称进行安装:
+使用 `stellar` 名称进行安装:
 ```bash
-helm install nightingale ./n9e-helm -n n9e --create-namespace
+helm install stellar ./stellar-helm -n kxdigit-monitoring --create-namespace
 ```
 
 ## 卸载
 
-卸载/删除 `nightingale`:
+卸载/删除 `stellar`:
 ```
-helm uninstall  nightingale -n n9e
+helm uninstall  stellar -n stellar
 ```
-
-## 参与贡献
-- 请首先在[issue列表](https://github.com/flashcatcloud/n9e-helm/issues)中创建一个issue
-- 如有必要, 请联系项目维护者/负责人进一步讨论
-- 请遵循[chart 模板开发规范](https://helm.sh/zh/docs/chart_template_guide/)

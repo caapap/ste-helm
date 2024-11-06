@@ -1,4 +1,4 @@
-# Helm Chart for Nightingale
+# Helm Chart for stellar
 
 English | [中文](README-CN.md)
 
@@ -17,7 +17,7 @@ git clone https://github.com/caapap/stellar-helm.git```
 ### Configure the chart
 The following items can be set via `--set` flag during installation or configured by editing the `values.yaml` directly(need to download the chart first).
 
-#### Configure the way how to expose nightingale service
+#### Configure the way how to expose stellar service
 
 - **Ingress**: The ingress controller must be installed in the Kubernetes cluster.
 - **ClusterIP**: Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster.
@@ -38,7 +38,7 @@ The following items can be set via `--set` flag during installation or configure
 
 #### Configure the external URL
 
-The external URL for nightingale web service is used to visit web service of nightingale 
+The external URL for web service is used to visit web service of stellar 
 
 Format: `protocol://domain[:port]`. Usually:
 
@@ -49,7 +49,7 @@ Format: `protocol://domain[:port]`. Usually:
 
 > NOTICE:
 
-- If nightingale is deployed behind the proxy, set it as the URL of proxy.
+- If stellar is deployed behind the proxy, set it as the URL of proxy.
 - The default login user is `root`, default password is `root.2020` .
 
 #### Configure the way how to persistent data
@@ -60,19 +60,14 @@ Format: `protocol://domain[:port]`. Usually:
 
 ### Install the chart
 
-Install the nightingale helm chart with a release name `nightingale`:
+Install the stellar helm chart with a release name `stellar`:
 ```bash
-helm install nightingale ./n9e-helm -n n9e --create-namespace
+helm install stellar ./stellar-helm -n kxdigit-monitoring --create-namespace
 ```
 
 ## Uninstallation
 
-To uninstall/delete the `nightingale` deployment:
+To uninstall/delete the `stellar` deployment:
 ```
-helm uninstall  nightingale -n n9e
+helm uninstall stellar -n ste
 ```
-
-## Contributing
-- Create and issue in [Issue List](https://github.com/flashcatcloud/n9e-helm/issues)
-- If necessary, contact and discuss with maintainer
-- Follow the [chart template developer's guide](https://helm.sh/docs/chart_template_guide/)

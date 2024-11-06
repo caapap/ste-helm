@@ -1,3 +1,4 @@
+{{/*
 # Copyright 2024 kxdigit | 讯飞数码
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-annotations:
-  catalog.cattle.io/release-name: kxdigit
-name: stellar
-description: A Helm Chart for stellar, cloud-native monitoring system
-keywords:
-  - stellar 
-  - monitoring
-  - alerting
-  - metrics
-  - traces
-  - logs
-maintainers:
-  name: kx 
-version: 0.2.8
+*/}}
+{{- if eq .Values.prometheus.type "internal" -}}
 apiVersion: v1
-appVersion: 2.0.0
-icon: assets/stellar-icon.png
+kind: Service
+metadata:
+  name: "{{ template "stellar.prometheus" . }}"
+  labels:
+{{ include "stellar.labels" . | indent 4 }}
+spec:
+  ports:
+    - name: "prometheus-port"
+      port: {{ template "stellar.prometheus.servicePort" . }}
+      targetPort: {{ template "stellar.prometheus.port" . }}
+  selector:
+{{ include "stellar.matchLabels" . | indent 4 }}
+    component: prometheus
+{{- end -}}
